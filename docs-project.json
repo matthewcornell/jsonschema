@@ -58,21 +58,16 @@
   "timezeros": [
     {
       "timezero_date": "2011-10-02",
-      "data_version_date": null,
       "is_season_start": true,
       "season_name": "2011-2012"
     },
     {
       "timezero_date": "2011-10-09",
-      "data_version_date": null,
-      "is_season_start": false,
-      "season_name": null
+      "is_season_start": false
     },
     {
       "timezero_date": "2011-10-16",
-      "data_version_date": null,
-      "is_season_start": false,
-      "season_name": null
+      "is_season_start": false
     }
   ]
 }
