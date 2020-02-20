@@ -24,14 +24,53 @@ def app():
         click.echo(f"invalid: {ve}")
 
 
-def do_post_schema_validation(proj_config_dict):
+def do_post_schema_validation(project_dict):
     """
-    Does post-schema validation of proj_config_dict as documented in Targets.md.
+    Does post-schema validation of project_dict as documented in Targets.md.
 
-    :param proj_config_dict:
+    :param project_dict:
     :raises RuntimeException: if proj_config_dict is invalid
     """
-    pass  # todo
+    project = None  # todo
+
+    locations = validate_and_create_locations(project, project_dict)
+    click.echo(f"- created {len(locations)} Locations: {locations}")
+
+    targets = validate_and_create_targets(project, project_dict)
+    click.echo(f"- created {len(targets)} Targets: {targets}")
+
+    timezeros = validate_and_create_timezeros(project, project_dict)
+    click.echo(f"- created {len(timezeros)} TimeZeros: {timezeros}")
+
+
+def validate_and_create_locations(project, project_dict):
+    # no validation necessary
+    return []  # todo
+
+
+def validate_and_create_targets(project, project_dict):
+    targets = []
+    type_name_to_type_int = None  # todo
+    for target_dict in project_dict['targets']:
+        type_name = _validate_target_dict(target_dict, type_name_to_type_int)  # raises RuntimeError if invalid
+    return targets
+
+
+def _validate_target_dict(target_dict, type_name_to_type_int):
+    type_name = target_dict['type']
+
+    # check for step_ahead_increment required if is_step_ahead
+    if target_dict['is_step_ahead'] and ('step_ahead_increment' not in target_dict):
+        raise RuntimeError(f"step_ahead_increment not found but is required when is_step_ahead is passed. "
+                           f"target_dict={target_dict}")
+
+    # todo
+
+    return type_name
+
+
+def validate_and_create_timezeros(project, project_dict):
+    return []  # todo
 
 
 if __name__ == '__main__':
