@@ -1,0 +1,1 @@
+A spike project to evaluate using https://python-jsonschema.readthedocs.io to validate a) zoltar3 project definition json files, and b) forecast json files.

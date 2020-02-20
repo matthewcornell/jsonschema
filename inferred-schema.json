@@ -1,0 +1,280 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "Zoltar3 Project Configuration Schema",
+  "description": "This schema helps validate project configuration json files that are used to create new Zoltar3 projects.",
+  "required": [
+    "name",
+    "is_public",
+    "description",
+    "home_url",
+    "logo_url",
+    "core_data",
+    "time_interval_type",
+    "visualization_y_label",
+    "locations",
+    "targets",
+    "timezeros"
+  ],
+  "properties": {
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "The Name Schema",
+      "default": "",
+      "examples": [
+        "Docs Example Project"
+      ],
+      "minLength": 1
+    },
+    "is_public": {
+      "$id": "#/properties/is_public",
+      "type": "boolean",
+      "title": "Whether the project is public or not",
+      "default": false
+    },
+    "description": {
+      "$id": "#/properties/description",
+      "type": "string",
+      "title": "The project's description",
+      "examples": [
+        "A full description of my project is here. You could include narrative details about what seasons are included, what group has provided data, whether the project focuses on real-time or retrospective forecasts."
+      ],
+      "minLength": 1
+    },
+    "home_url": {
+      "$id": "#/properties/home_url",
+      "type": "string",
+      "format": "uri",
+      "title": "The project's home URL",
+      "minLength": 1,
+      "examples": [
+        "https://reichlab.io"
+      ]
+    },
+    "logo_url": {
+      "$id": "#/properties/logo_url",
+      "type": "string",
+      "format": "uri",
+      "title": "The project's logo URL"
+    },
+    "core_data": {
+      "$id": "#/properties/core_data",
+      "type": "string",
+      "format": "uri",
+      "title": "The project's core data",
+      "minLength": 1
+    },
+    "time_interval_type": {
+      "$id": "#/properties/time_interval_type",
+      "type": "string",
+      "title": "The Time_interval_type Schema",
+      "default": "",
+      "enum": [
+        "Week",
+        "Biweek",
+        "Month"
+      ]
+    },
+    "visualization_y_label": {
+      "$id": "#/properties/visualization_y_label",
+      "type": "string",
+      "title": "The Visualization_y_label Schema",
+      "default": "",
+      "examples": [
+        "the scale for your variable of interest"
+      ],
+      "minLength": 1
+    },
+    "locations": {
+      "$id": "#/properties/locations",
+      "type": "array",
+      "title": "All locations in this project",
+      "items": {
+        "$id": "#/properties/locations/items",
+        "type": "object",
+        "title": "The locations schema",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "$id": "#/properties/locations/items/properties/name",
+            "type": "string",
+            "title": "The Name Schema",
+            "default": "",
+            "examples": [
+              "location1"
+            ],
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "targets": {
+      "$id": "#/properties/targets",
+      "type": "array",
+      "title": "The Targets Schema",
+      "items": {
+        "$id": "#/properties/targets/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "name",
+          "description",
+          "type",
+          "is_step_ahead",
+          "step_ahead_increment",
+          "unit",
+          "range",
+          "cats"
+        ],
+        "properties": {
+          "name": {
+            "$id": "#/properties/targets/items/properties/name",
+            "type": "string",
+            "title": "The target's name",
+            "examples": [
+              "pct next week"
+            ],
+            "minLength": 1
+          },
+          "description": {
+            "$id": "#/properties/targets/items/properties/description",
+            "type": "string",
+            "title": "The target's description",
+            "examples": [
+              "The forecasted percentage of positive tests for the next week"
+            ],
+            "minLength": 1
+          },
+          "type": {
+            "$id": "#/properties/targets/items/properties/type",
+            "type": "string",
+            "title": "The target's type",
+            "enum": [
+              "continuous",
+              "discrete",
+              "nominal",
+              "binary",
+              "date"
+            ]
+          },
+          "is_step_ahead": {
+            "$id": "#/properties/targets/items/properties/is_step_ahead",
+            "type": "boolean",
+            "title": "Whether the target is a step-ahead one"
+          },
+          "step_ahead_increment": {
+            "$id": "#/properties/targets/items/properties/step_ahead_increment",
+            "type": "integer",
+            "title": "For is_step_ahead=true, specifies the number of steps ahead this target is.",
+            "minimum": 0
+          },
+          "unit": {
+            "$id": "#/properties/targets/items/properties/unit",
+            "type": "string",
+            "title": "The target's unit",
+            "default": "",
+            "examples": [
+              "percent"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "range": {
+            "$id": "#/properties/targets/items/properties/range",
+            "type": "array",
+            "title": "The target's range",
+            "items": {
+              "$id": "#/properties/targets/items/properties/range/items",
+              "type": "number",
+              "uniqueItems": true,
+              "default": [],
+              "examples": [
+                0,
+                100
+              ]
+            }
+          },
+          "cats": {
+            "$id": "#/properties/targets/items/properties/cats",
+            "type": "array",
+            "title": "The target's categories",
+            "items": {
+              "$id": "#/properties/targets/items/properties/cats/items",
+              "type": "number",
+              "uniqueItems": true,
+              "default": [],
+              "examples": [
+                0,
+                1,
+                1.1,
+                2,
+                2.2,
+                3,
+                3.3,
+                5,
+                10,
+                50
+              ]
+            }
+          }
+        }
+      }
+    },
+    "timezeros": {
+      "$id": "#/properties/timezeros",
+      "type": "array",
+      "title": "The project's timezeros",
+      "items": {
+        "$id": "#/properties/timezeros/items",
+        "type": "object",
+        "required": [
+          "timezero_date",
+          "data_version_date",
+          "is_season_start",
+          "season_name"
+        ],
+        "properties": {
+          "timezero_date": {
+            "$id": "#/properties/timezeros/items/properties/timezero_date",
+            "type": "string",
+            "format": "date",
+            "title": "The timezero's timezero_date",
+            "minLength": 1,
+            "examples": [
+              "2011-10-02"
+            ]
+          },
+          "data_version_date": {
+            "$id": "#/properties/timezeros/items/properties/data_version_date",
+            "type": "string",
+            "format": "date",
+            "title": "The timezero's data_version_date",
+            "default": null,
+            "examples": [
+              "2011-10-02",
+              null
+            ]
+          },
+          "is_season_start": {
+            "$id": "#/properties/timezeros/items/properties/is_season_start",
+            "type": "boolean",
+            "title": "Whether this timezero starts a season or not"
+          },
+          "season_name": {
+            "$id": "#/properties/timezeros/items/properties/season_name",
+            "type": "string",
+            "title": "For is_season_start=true, the season's name",
+            "default": "",
+            "examples": [
+              "2011-2012"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
