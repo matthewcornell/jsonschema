@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "85dd23e24ed8da08fa0bb9d0a64280eda6d67c3521f9e19e883d9f0071541191"
+            "sha256": "26da7ba1920bf76c67175642ea2ff33259e8551c69ba2ca4af3956afccd22017"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,6 +31,17 @@
             "index": "pypi",
             "version": "==7.0"
         },
+        "deepdiff": {
+            "extras": [
+                "murmur"
+            ],
+            "hashes": [
+                "sha256:b3fa588d1eac7fa318ec1fb4f2004568e04cb120a1989feda8e5e7164bcbf07a",
+                "sha256:ed7342d3ed3c0c2058a3fb05b477c943c9959ef62223dca9baa3375718a25d87"
+            ],
+            "index": "pypi",
+            "version": "==4.2.0"
+        },
         "importlib-metadata": {
             "hashes": [
                 "sha256:06f5b3a99029c7134207dd882428a66992a9de2bef7c2b699b5641f9886c3302",
@@ -46,6 +57,18 @@
             ],
             "index": "pypi",
             "version": "==3.2.0"
+        },
+        "mmh3": {
+            "hashes": [
+                "sha256:185209a217c52afe43e079e5b232d0ef0f3a262601eaaf4371326ab6dcbec508"
+            ],
+            "version": "==2.5.1"
+        },
+        "ordered-set": {
+            "hashes": [
+                "sha256:a7bfa858748c73b096e43db14eb23e2bc714a503f990c89fac8fab9b0ee79724"
+            ],
+            "version": "==3.1.1"
         },
         "pyrsistent": {
             "hashes": [
